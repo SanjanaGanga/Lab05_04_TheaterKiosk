@@ -1,13 +1,31 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+public class TheaterKiosk {
+    public static void main(String[] args) {
+        // Set up scanner to read user input
+        Scanner in = new Scanner(System.in);
+
+        //Declare variables
+        int age = 0;
+        String trash = ""; // For storing bad input
+
+        // Ask user for their age
+        System.out.print("Please enter your age: ");
+
+        // Check that user actually typed a number
+        if (in.hasNextInt()) {
+            age = in.nextInt();
+            in.nextLine(); // Clear the newline out of the buffer
+
+            // Verify if they are 21 or older. Do nothing if not
+            if (age >= 21) {
+                System.out.println("You get a paper wrist band.");
+            }
+        } else {
+            // If they type letters instead of a number
+            trash = in.nextLine();
+            System.out.println("Error: '" + trash + "' is not a valid age.");
+            System.out.println("Please run the program again and enter a number");
+        }
+    }
 }
